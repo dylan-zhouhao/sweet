@@ -1,0 +1,85 @@
+@@ -1,84 +0,0 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>sweet</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            font-family: Helvetica Neue, Helvetica, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+            background-image: url('');
+            font-size: 85%;
+            margin: 0;
+        }
+
+        h2 {
+            font-size: 220%;
+            font-weight: 400;
+        }
+
+        .sweet {
+            position: absolute;
+            width: 100%;
+            top: 40%;
+            transform: translate(0, -50%);
+            text-align: center;
+        }
+
+        .timer {
+            font-size: 180%;
+            line-height: 1.5;
+            margin: 1em 0;
+        }
+
+        .timer b {
+            color: rgb(253, 99, 125);
+        }
+    </style>
+</head>
+
+<body>
+<div class="sweet">
+    <h2>甜甜和周周相识</h2>
+    <div class="timer">
+        <b id="days"></b> Days <b id="hours"></b> Hours <b id="minutes"></b> Minutes <b id="seconds"></b> Seconds
+    </div>
+</div>
+
+<script>
+    $(function () {
+        timer();
+        setInterval(timer, 1000);
+    })
+
+    function timer() {
+        // window.setTimeout("show_date_time()", 1000);
+        var start = new Date("2021-11-20 18:45:00".replace(/-/g,'/')).getTime(); // 2021-11-20 18:45:00
+        var t = new Date().getTime() - start;
+        var h = ~~(t / 1000 / 60 / 60 % 24);
+        if (h < 10) {
+            h = "0" + h;
+        }
+        var m = ~~(t / 1000 / 60 % 60);
+        if (m < 10) {
+            m = "0" + m;
+        }
+        var s = ~~(t / 1000 % 60);
+        if (s < 10) {
+            s = "0" + s;
+        }
+        document.getElementById('days').innerHTML = ~~(t / 1000 / 60 / 60 / 24);
+        document.getElementById('hours').innerHTML = h;
+        document.getElementById('minutes').innerHTML = m;
+        document.getElementById('seconds').innerHTML = s;
+    }
+</script>
+</body>
+
+</html>
